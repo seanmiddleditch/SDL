@@ -1317,3 +1317,6 @@
 #define SDL_HasSVE2 SDL_HasSVE2_REAL
 #define SDL_GamepadHasCapSense SDL_GamepadHasCapSense_REAL
 #define SDL_GetGamepadCapSense SDL_GetGamepadCapSense_REAL
+#define SDL_InitSingleton SDL_InitSingleton_REAL
+#define SDL_IsSingleton SDL_IsSingleton_REAL
+#define SDL_QuitSingleton SDL_QuitSingleton_REAL

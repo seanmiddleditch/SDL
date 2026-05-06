@@ -1290,3 +1290,6 @@ _SDL_LoadJPG
 _SDL_HasSVE2
 _SDL_GamepadHasCapSense
 _SDL_GetGamepadCapSense
+_SDL_InitSingleton
+_SDL_IsSingleton
+_SDL_QuitSingleton

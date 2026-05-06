@@ -3544,6 +3544,7 @@ if(UNIX AND NOT APPLE AND NOT RISCOS AND NOT HAIKU)
   sdl_sources(${SDL3_SOURCE_DIR}/src/dialog/unix/SDL_zenitymessagebox.c)
 endif()
 
+sdl_sources("${SDL3_SOURCE_DIR}/src/process/SDL_singleton.c")
 sdl_sources("${SDL3_SOURCE_DIR}/src/process/SDL_process.c")
 if(WINDOWS)
   sdl_glob_sources(
