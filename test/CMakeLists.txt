@@ -495,7 +495,6 @@ add_sdl_test_executable(testmanymouse SOURCES testmanymouse.c NAME83 manymous)
 add_sdl_test_executable(testmodal SOURCES testmodal.c NAME83 modal)
 add_sdl_test_executable(testtray NEEDS_RESOURCES TESTUTILS SOURCES testtray.c NAME83 tray)
 
-
 add_sdl_test_executable(testprocess
     NONINTERACTIVE THREADS
     NONINTERACTIVE_ARGS $<TARGET_FILE:childprocess>
@@ -505,6 +504,16 @@ add_sdl_test_executable(testprocess
 )
 add_sdl_test_executable(childprocess SOURCES childprocess.c NAME83 chldproc)
 add_dependencies(testprocess childprocess)
+
+add_sdl_test_executable(testsingleton
+    BUILD_DEPENDENT TESTUTILS MAIN_CALLBACKS
+    NONINTERACTIVE_ARGS $<TARGET_FILE:childsingleton>
+    INSTALLED_ARGS "${CMAKE_INSTALL_FULL_LIBEXECDIR}/installed-tests/SDL3/childsingleton${CMAKE_EXECUTABLE_SUFFIX}"
+    SOURCES testsingleton.c
+    NAME83 singlton
+)
+add_sdl_test_executable(childsingleton SOURCES childsingleton.c NAME83 chldinst)
+add_dependencies(testsingleton childsingleton)
 
 get_property(SDL_TEST_EXECUTABLES DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}" PROPERTY SDL_TEST_EXECUTABLES)
 

@@ -154,6 +154,7 @@ test/testsem
 test/testsensor
 test/testshader
 test/testshape
+test/testsingleton
 test/testsprite
 test/testspriteminimal
 test/testsurround
