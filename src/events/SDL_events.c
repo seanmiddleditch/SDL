@@ -30,6 +30,7 @@
 #include "../camera/SDL_camera_c.h"
 #include "../timer/SDL_timer_c.h"
 #include "../core/linux/SDL_udev.h"
+#include "../process/SDL_singleton_c.h"
 #ifndef SDL_JOYSTICK_DISABLED
 #include "../joystick/SDL_joystick_c.h"
 #endif
@@ -1502,6 +1503,8 @@ void SDL_PumpEventMaintenance(void)
     SDL_UpdateCursorAnimation();
 
     SDL_UpdateTrays();
+
+    SDL_UpdateSingleton();
 
     SDL_SendPendingSignalEvents(); // in case we had a signal handler fire, etc.
 }

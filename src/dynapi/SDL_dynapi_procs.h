@@ -1328,3 +1328,4 @@ SDL_DYNAPI_PROC(bool,SDL_GetGamepadCapSense,(SDL_Gamepad *a,SDL_GamepadCapSenseT
 SDL_DYNAPI_PROC(bool,SDL_InitSingleton,(const char *a, const char *b),(a,b),return)
 SDL_DYNAPI_PROC(bool,SDL_IsSingleton,(void),(),return)
 SDL_DYNAPI_PROC(void,SDL_QuitSingleton,(void),(),return)
+SDL_DYNAPI_PROC(bool,SDL_NotifySingleton,(const char * const *a, Sint32 b),(a,b),return)

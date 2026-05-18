@@ -31,7 +31,18 @@ typedef enum SDL_SYS_SingletonStatus
     SDL_SINGLETON_FALSE,
 } SDL_SYS_SingletonStatus;
 
+static const int SDL_SYS_SingletonMessageBufferInitialSize = 4096;
+static const int SDL_SYS_SingletonMessageBufferMaxSize = SDL_MAX_UINT16;
+
+bool SDL_SYS_PushSingletonMessageEvent(const char *buffer, size_t size);
+
 bool SDL_SYS_InitSingleton(const char *root, bool *out_is_singleton);
 void SDL_SYS_QuitSingleton(void);
+
+bool SDL_SYS_SingletonBeginListen(const char *root);
+void SDL_SYS_SingletonEndListen(void);
+void SDL_SYS_UpdateListen(void);
+
+bool SDL_SYS_SendSingletonMessage(const char *root, const char *message, size_t size, Sint32 timeoutMS);
 
 #endif // SDL_syssingleton_

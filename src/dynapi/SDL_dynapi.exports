@@ -1293,3 +1293,4 @@ _SDL_GetGamepadCapSense
 _SDL_InitSingleton
 _SDL_IsSingleton
 _SDL_QuitSingleton
+_SDL_NotifySingleton

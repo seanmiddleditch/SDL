@@ -121,6 +121,36 @@ extern SDL_DECLSPEC bool SDLCALL SDL_IsSingleton();
  */
 extern SDL_DECLSPEC void SDLCALL SDL_QuitSingleton(void);
 
+/**
+ * Sends a message to the current singleton instance.
+ *
+ * If this process is the singleton, it will receive the message. If another
+ * instance is the singleton, the message will be sent via IPC.
+ *
+ * SDL_InitSingleton _must_ have been invoked prior to this function.
+ *
+ * This function will block until the message is sent or sending fails.
+ * FIXME: allow specifying a timeout value?
+ *
+ * The params array is one or more strings which will be sent to the
+ * owner of the instance, and the params list should be terminated
+ * with a NULL, e.g.:
+ *
+ * ```c
+ * const char *params[] = { "first", "second", NULL };
+ * ```
+ *
+ * \param params the arguments for the message.
+ * \param timeoutMS timeout in microseconds, or -1 to wait indefinitely.
+ *
+ * \threadsafety This function should only be called on the main thread.
+ *
+ * \since This function is available since SDL 3.x.x.
+ *
+ * \sa SDL_InitSingleton
+ */
+extern SDL_DECLSPEC bool SDLCALL SDL_NotifySingleton(const char * const *params, Sint32 timeoutMS);
+
 /* Ends C function definitions when using C++ */
 #ifdef __cplusplus
 }

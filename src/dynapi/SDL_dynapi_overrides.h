@@ -1320,3 +1320,4 @@
 #define SDL_InitSingleton SDL_InitSingleton_REAL
 #define SDL_IsSingleton SDL_IsSingleton_REAL
 #define SDL_QuitSingleton SDL_QuitSingleton_REAL
+#define SDL_NotifySingleton SDL_NotifySingleton_REAL

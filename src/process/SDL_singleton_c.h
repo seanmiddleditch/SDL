@@ -18,31 +18,11 @@ Simple DirectMedia Layer
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 */
-#include "../SDL_syssingleton.h"
+#include "SDL_internal.h"
 
-bool SDL_SYS_InitSingleton(const char *root, bool *out_is_singleton)
-{
-    return SDL_Unsupported();
-}
+#ifndef SDL_singleton_c_h_
+#define SDL_singleton_c_h_
 
-void SDL_SYS_QuitSingleton(void)
-{
-}
+void SDL_UpdateSingleton(void);
 
-bool SDL_SYS_SingletonBeginListen(const char *root)
-{
-    return SDL_Unsupported();
-}
-
-void SDL_SYS_SingletonEndListen(void)
-{
-}
-
-void SDL_SYS_UpdateListen(void)
-{
-}
-
-bool SDL_SYS_SendSingletonMessage(const char *root, const char *message, size_t size, Sint32 timeoutMS)
-{
-    return SDL_Unsupported();
-}
+#endif // SDL_singleton_c_h_

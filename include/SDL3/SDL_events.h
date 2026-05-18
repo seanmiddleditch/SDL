@@ -267,6 +267,9 @@ typedef enum SDL_EventType
     SDL_EVENT_RENDER_DEVICE_RESET, /**< The device has been reset and all textures need to be recreated */
     SDL_EVENT_RENDER_DEVICE_LOST, /**< The device has been lost and can't be recovered. */
 
+    /* Singleton events */
+    SDL_EVENT_SINGLETON_MESSAGE = 0x2100, /**< Message sent by a secondary (non-singleton) instance of the process */
+
     /* Reserved events for private platforms */
     SDL_EVENT_PRIVATE0 = 0x4000,
     SDL_EVENT_PRIVATE1,
@@ -991,6 +994,20 @@ typedef struct SDL_SensorEvent
 } SDL_SensorEvent;
 
 /**
+ * Singleton message event structure.
+ *
+ * \since This struct is available since SDL 3.x.x.
+ */
+typedef struct SDL_SingletonMessageEvent
+{
+    SDL_EventType type; /**< SDL_EVENT_APP_INSTANCE_MESSAGE */
+    Uint32 reserved;
+    Uint64 timestamp;   /**< In nanoseconds, populated using SDL_GetTicksNS() */
+    Sint32 num_args;    /**< Number of entries in args, excluding the trailing NULL */
+    const char * const *args; /**< Array of zero or more arguments, with a trailing NULL entry */
+} SDL_SingletonMessageEvent;
+
+/**
  * The "quit requested" event
  *
  * \since This struct is available since SDL 3.2.0.
@@ -1075,6 +1092,7 @@ typedef union SDL_Event
     SDL_RenderEvent render;                 /**< Render event data */
     SDL_DropEvent drop;                     /**< Drag and drop event data */
     SDL_ClipboardEvent clipboard;           /**< Clipboard event data */
+    SDL_SingletonMessageEvent singleton;    /**< Singleton message data */
 
     /* This is necessary for ABI compatibility between Visual C++ and GCC.
        Visual C++ will respect the push pack pragma and use 52 bytes (size of
